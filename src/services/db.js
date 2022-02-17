@@ -3,7 +3,7 @@ const cors = require('cors');
 const mysql = require('mysql')
 const app = express()
 
-const SELECT_ALL_DOCUMENTS_QUERY = `SELECT d_title, d_type,	d_year,	d_abstract,	d_url, d_doi, d_standard_number, j_name, sa_name
+const SELECT_ALL_DOCUMENTS_QUERY = `SELECT d_id, d_title, d_type,	d_year,	d_abstract,	d_url, d_doi, d_standard_number, j_name, sa_name
                                     FROM dp_document
                                     INNER JOIN dp_journal
                                     ON d_fk_journal_id = j_id
