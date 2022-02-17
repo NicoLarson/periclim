@@ -19,10 +19,14 @@ let connection = mysql.createConnection({
     charset: 'UTF8',
 })
 
+app.use(cors())
+
+
 connection.connect(err => {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Connected! -");
 });
+
 
 app.get('/', (req, res) => {
     res.send('Go to /articles to see articles')
@@ -34,7 +38,7 @@ app.get('/articles', (req, res) => {
             return res.send(err)
         } else {
             return res.json({
-                data: results
+                results
             })
         }
     })
