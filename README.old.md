@@ -35,9 +35,3 @@ npm start
 - Filtre
 
 Un dossier par composant.
-Filtre
-
-Un dossier par composant.
-
-
-## Connection à la base de données MySQL
