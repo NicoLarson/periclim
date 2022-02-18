@@ -21,7 +21,6 @@ let connection = mysql.createConnection({
 
 app.use(cors())
 
-
 connection.connect(err => {
     if (err) throw err;
     console.log("Connected! -");
