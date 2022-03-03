@@ -17,6 +17,15 @@ const SELECT_ARTICLE_AUTHORS_QUERY = (documentId) => `SELECT a_first_name, a_las
                                       ON a_id = dha_fk_author_id
                                       WHERE dha_fk_document_id = ${documentId};`
 
+
+const SELECT_ARTICLES_BY_WORDS_QUERY = (searchWords) => `SELECT * 
+                                                            FROM dp_document
+                                                            INNER JOIN dp_journal
+                                                            ON d_fk_journal_id = j_id
+                                                            INNER JOIN dp_subject_area
+                                                            ON d_fk_subject_area_id = sa_id
+                                                            WHERE d_title LIKE '%${searchWords}%' OR d_abstract LIKE '%${searchWords}%';`
+
 let connection = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -49,9 +58,22 @@ app.get('/articles', (req, res) => {
     })
 })
 
-app.get('/article/:id/authors', (req, res) => {
+app.get('/authors/article=:id', async  (req, res) => {
     const id = parseInt(req.params.id)
     connection.query(SELECT_ARTICLE_AUTHORS_QUERY(id), (err, results) => {
+        if (err) {
+            return res.send(err)
+        } else {
+            return res.json({
+                results
+            })
+        }
+    })
+})
+
+app.get('/articles/search/:words', (req, res) => {
+    const words = req.params.words
+    connection.query(SELECT_ARTICLES_BY_WORDS_QUERY(words), (err, results) => {
         if (err) {
             return res.send(err)
         } else {

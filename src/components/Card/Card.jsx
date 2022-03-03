@@ -3,8 +3,9 @@ import "./Card.css"
 
 const Card = ({ results }) => {
     let display;
-
-    if (results) {
+    if (!results || results.length === 0) {
+        display = "Aucun article trouvé :/";
+    } else {
         display = results.map((document) => {
             let { d_id, d_title, d_type, d_year, d_abstract, d_url, d_doi, d_standard_number, j_name, sa_name } = document;
             return (
@@ -37,8 +38,6 @@ const Card = ({ results }) => {
                     }</p>
                 </li>)
         });
-    } else {
-        display = "Aucun article trouvé :/";
     }
 
     return <>{display}</>;

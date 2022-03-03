@@ -13,18 +13,17 @@ function App() {
   let [fetchedData, updateFetchedData] = useState([])
   let { results } = fetchedData;
 
-  let api = 'http://localhost:4000/articles'
+  let api = `http://localhost:4000/articles/search/${search}`
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json());
       updateFetchedData(data);
     })()
   }, [api])
-
   return (
-    <div>
+    <div className="search__container">
       <h1>Periclim</h1>
-      <Search />
+      <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
       <ul class="list-group">
         <Card results={results} />
       </ul>
