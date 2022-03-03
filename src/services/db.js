@@ -11,6 +11,12 @@ const SELECT_ALL_DOCUMENTS_QUERY = `SELECT d_id, d_title, d_type,	d_year,	d_abst
                                     ON d_fk_subject_area_id = sa_id;
                                     `
 
+const SELECT_ARTICLE_AUTHORS_QUERY = (documentId) => `SELECT a_first_name, a_last_name, a_middle_name
+                                      FROM dp_author
+                                      INNER JOIN dp_document_has_dp_author
+                                      ON a_id = dha_fk_author_id
+                                      WHERE dha_fk_document_id = ${documentId};`
+
 let connection = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -33,6 +39,19 @@ app.get('/', (req, res) => {
 
 app.get('/articles', (req, res) => {
     connection.query(SELECT_ALL_DOCUMENTS_QUERY, (err, results) => {
+        if (err) {
+            return res.send(err)
+        } else {
+            return res.json({
+                results
+            })
+        }
+    })
+})
+
+app.get('/article/:id/authors', (req, res) => {
+    const id = parseInt(req.params.id)
+    connection.query(SELECT_ARTICLE_AUTHORS_QUERY(id), (err, results) => {
         if (err) {
             return res.send(err)
         } else {

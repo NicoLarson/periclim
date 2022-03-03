@@ -123,7 +123,7 @@ Le but est d'afficher la liste des articles de la base de données
 
 - [x] Tous les articles doivent être affichés.
 - [x] on doit voir les informations suivantes: Titre, Année, Lien de l'extraction de l'article, Lien du DOI, ISSN, Nom du journal de publication, un extrait déroulant, Sujet due l'article.
-- [ ] On peut accéder à l'article entier
+- [x] On peut accéder à l'article entier
 
 #### 3.1.4 Tâche technique
 
