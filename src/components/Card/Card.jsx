@@ -37,7 +37,7 @@ const Card = ({ results }) => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <a href="#" class="btn btn-success">DOI</a>
+                        <a href={d_doi} class="btn btn-success">DOI</a>
                     </div>
                     <div class="card-body btn-group-horizontal">
                         <a class="btn btn-dark">#{
