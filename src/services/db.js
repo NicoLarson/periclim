@@ -85,6 +85,18 @@ app.get('/articles/search/:words', (req, res) => {
 
 })
 
+app.get('/articles/search/', (req, res) => {
+    connection.query(SELECT_ALL_DOCUMENTS_QUERY, (err, results) => {
+        if (err) {
+            return res.send(err)
+        } else {
+            return res.json({
+                results
+            })
+        }
+    })
+
+})
 app.listen(4000, () => {
     console.log('Server listening on port 4000')
 })

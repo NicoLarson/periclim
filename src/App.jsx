@@ -11,7 +11,6 @@ function App() {
 
   let [fetchedData, updateFetchedData] = useState([])
   let { results } = fetchedData;
-
   let api = `http://localhost:4000/articles/search/${search}`
   useEffect(() => {
     (async function () {
