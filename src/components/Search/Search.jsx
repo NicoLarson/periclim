@@ -5,15 +5,12 @@ const Search = ({ setSearch, updatePageNumber }) => {
         e.preventDefault();
     };
     return (
-        <form>
-            <input
-                onChange={(e) => {
-                    updatePageNumber(1);
-                    setSearch(e.target.value);
-                }}
-                placeholder="Rechercher"
-                type="text"
-            />
+        <form class="d-flex input-group">
+            <input onChange={(e) => {
+                updatePageNumber(1);
+                setSearch(e.target.value);
+            }} class="form-control" type="text" placeholder="Search" />
+            <button class="btn btn-primary" type="submit">Search</button>
         </form>
     );
 
