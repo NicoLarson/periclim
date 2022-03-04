@@ -19,21 +19,24 @@ function App() {
     })()
   }, [api])
   return (
-    <div>
+    <>
       <header>
         <h1>Periclim</h1>
-        <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
       </header>
       <main>
-        <Filter className="filter__container" />
-        <div>
-          <ul class="list-group card__container">
+        <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
+        <div className="articlesContainer">
+          <Filter />
+          <ul className="articlesCardsContainer">
             <Card results={results} />
           </ul>
-          <Pagination />
         </div>
+        <Pagination />
       </main>
-    </div>
+      <footer>
+        <p>&copy;Copyright - MIT - 2022</p>
+      </footer>
+    </>
   )
 
 }

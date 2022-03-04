@@ -1,20 +1,34 @@
-header {
-  padding: 4rem;
-}
-
+/* DESKTOP */
 h1 {
-  padding: 0;
+  padding: 4rem 0;
   margin: 0;
   text-align: center;
   font-size: 4rem;
 }
 
-main {
+.articlesContainer {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  align-items: flex-start;
+  justify-items: center;
 }
 
-.card__container {
-  width: 70vw;
+.articlesCardsContainer {
+  padding: 0;
 }
-.filter__container {
-  width: 20vw;
+
+footer{
+  text-align: center;
+}
+
+/* TABLET */
+/* MOBILE */
+
+@media screen and (max-width: 750px) {
+  .articlesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

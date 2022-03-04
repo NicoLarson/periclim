@@ -2,24 +2,24 @@ import React, { useState, useEffect } from "react";
 
 const GetAuthorsByArticles = ({ articleId }) => {
 
-
     let [fetchedData, updateFetchedData] = useState([])
-    let { authorsResults } = fetchedData;
+    let { results } = fetchedData;
 
-    let apiAuthors = `http://localhost:4000/article/${articleId}/authors`
+    let api = `http://localhost:4000/authors/article=${articleId}`
     useEffect(() => {
         (async function () {
-            let data = await fetch(apiAuthors).then((res) => res.json());
-            updateFetchedData(data);
+          let data = await fetch(api).then((res) => res.json());
+          updateFetchedData(data);
         })()
-    }, [apiAuthors])
-
+      }, [api])
+    console.log(results)
     let display;
-    if (authorsResults) {
-        display = articleId.map((author) => {
+    if (results) {
+        display = results.map((author) => {
             let { a_first_name, a_last_name, a_middle_name } = author;
+            author.a_last_name = author.a_last_name.toUpperCase()   
             return (
-                <a class="btn btn-secondary">{a_first_name} - {a_middle_name} - {a_last_name}</a>
+                <a class="btn btn-secondary">{a_first_name} {a_middle_name} {a_last_name}</a>
             )
         })
     } else {

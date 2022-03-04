@@ -2,7 +2,7 @@ import "./Pagination.css"
 
 const Pagination = () => {
     return (
-        <div>
+        <>
             <ul class="pagination">
                 <li class="page-item disabled">
                     <a class="page-link" href="#">&laquo;</a>
@@ -26,7 +26,7 @@ const Pagination = () => {
                     <a class="page-link" href="#">&raquo;</a>
                 </li>
             </ul>
-        </div>
+        </>
     )
 }
 

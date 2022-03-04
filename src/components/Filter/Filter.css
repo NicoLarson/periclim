@@ -1,0 +1,9 @@
+.form-group{
+padding: 1rem;
+}
+@media screen and (max-width: 750px) {
+    .filter__container  {
+        margin: 0 auto 4rem;
+        width: 100%;
+    }
+  }
