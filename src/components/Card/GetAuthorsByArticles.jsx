@@ -5,7 +5,7 @@ const GetAuthorsByArticles = ({ articleId }) => {
 
     let [fetchedData, updateFetchedData] = useState([])
     let { authorsResults } = fetchedData;
-    
+
     let apiAuthors = `http://localhost:4000/article/${articleId}/authors`
     useEffect(() => {
         (async function () {
@@ -15,16 +15,15 @@ const GetAuthorsByArticles = ({ articleId }) => {
     }, [apiAuthors])
 
     let display;
-console.log(fetchedData.results)
     if (authorsResults) {
         display = articleId.map((author) => {
             let { a_first_name, a_last_name, a_middle_name } = author;
             return (
-                <li>{a_first_name} - {a_middle_name} - {a_last_name}</li>
+                <a class="btn btn-secondary">{a_first_name} - {a_middle_name} - {a_last_name}</a>
             )
         })
     } else {
-        display = "No Characters Found :/";
+        display = "Nobody Found :/";
     }
 
     return <>{display}</>;
