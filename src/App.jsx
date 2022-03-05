@@ -21,7 +21,8 @@ function App() {
   return (
     <>
       <header>
-        <h1>Periclim</h1>
+        <h1 className="title">Periclim</h1>
+        <h2 className="stitle">Base de données bibliographies</h2>
       </header>
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />

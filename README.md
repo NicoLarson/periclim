@@ -10,6 +10,8 @@
       - [2.2.3 Afficher les articles en fonction de la recherche et du filtre](#223-afficher-les-articles-en-fonction-de-la-recherche-et-du-filtre)
       - [2.2.4 Afficher l'article en entier](#224-afficher-larticle-en-entier)
       - [2.2.5 Afficher les auteurs en fonction de l'id de l'article](#225-afficher-les-auteurs-en-fonction-de-lid-de-larticle)
+      - [2.2.6 Afficher le nombres d'articles total (Pour la pagination)](#226-afficher-le-nombres-darticles-total-pour-la-pagination)
+      - [2.2.6 Afficher le nombres d'articles total par mot clé (Pour la pagination)](#226-afficher-le-nombres-darticles-total-par-mot-clé-pour-la-pagination)
   - [3. Les composants](#3-les-composants)
     - [3.1 La liste des articles](#31-la-liste-des-articles)
       - [3.1.1 Description](#311-description)
@@ -58,13 +60,15 @@ npm start
 ## 2. Fonctionnalités
 
 - [x] Afficher des documents
-- [ ] Faire une recherche
+- [x] Faire une recherche
 - [ ] Importer des bibliographies dans la bdd
 - [ ] Exporter une liste de recherche au format ...
 
 ### 2.1 Connexion à la base de données MySQL (Création API REST)
 
 ### 2.2 Requêtes SQL
+
+- [] Créer des vues
 
 #### 2.2.1 Afficher tous les articles
 
@@ -101,6 +105,30 @@ FROM dp_author
 INNER JOIN dp_document_has_dp_author
 ON a_id = dha_fk_author_id
 WHERE dha_fk_document_id = 1;
+```
+
+#### 2.2.6 Afficher le nombres d'articles total (Pour la pagination)
+
+```sql
+SELECT COUNT(d_id)
+FROM dp_document
+INNER JOIN dp_journal
+ON d_fk_journal_id = j_id
+INNER JOIN dp_subject_area
+ON d_fk_subject_area_id = sa_id;
+```
+
+#### 2.2.6 Afficher le nombres d'articles total par mot clé (Pour la pagination)
+
+```sql
+SELECT count(*) 
+FROM dp_document
+INNER JOIN dp_journal
+ON d_fk_journal_id = j_id
+INNER JOIN dp_subject_area
+ON d_fk_subject_area_id = sa_id
+WHERE d_title LIKE '%irr%' OR d_abstract LIKE '%irr% '
+LIMIT 5;
 ```
 
 ---

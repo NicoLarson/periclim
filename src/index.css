@@ -1,9 +1,14 @@
 /* DESKTOP */
 h1 {
-  padding: 4rem 0;
+  padding: 4rem 0 0;
   margin: 0;
   text-align: center;
   font-size: 4rem;
+  line-height: 3.6rem;
+}
+.stitle {
+  text-align: center;
+  font-size: 1rem;
 }
 
 .articlesContainer {
@@ -17,7 +22,7 @@ h1 {
   padding: 0;
 }
 
-footer{
+footer {
   text-align: center;
 }
 

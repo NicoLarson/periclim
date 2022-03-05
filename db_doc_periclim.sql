@@ -7,6 +7,11 @@
 -- Version du serveur : 8.0.27
 -- Version de PHP : 8.1.2
 
+CREATE USER 'periclim'@'localhost' IDENTIFIED BY 'periclim';
+GRANT ALL PRIVILEGES ON * . * TO 'periclim'@'localhost';
+FLUSH PRIVILEGES
+
+
 CREATE DATABASE db_doc_periclim;
 
 USE db_doc_periclim;

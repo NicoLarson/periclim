@@ -1,14 +1,13 @@
 .searchBar {
-    margin: 0 auto 4rem;
-    max-width: 40%;
+  margin: 4rem auto 4rem;
+  max-width: 40%;
 }
-
 
 /* MOBILE */
 
 @media screen and (max-width: 750px) {
-    .searchBar {
-        margin: 0 auto 4rem;
-        max-width: 80%;
-    }
+  .searchBar {
+    margin: 0 auto 4rem;
+    max-width: 80%;
   }
+}
