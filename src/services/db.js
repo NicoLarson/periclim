@@ -3,33 +3,40 @@ const cors = require('cors');
 const mysql = require('mysql')
 const app = express()
 
-const SELECT_ALL_DOCUMENTS_QUERY = `SELECT d_id, d_title, d_type,	d_year,	d_abstract,	d_url, d_doi, d_standard_number, j_name, sa_name
-                                    FROM dp_document
-                                    INNER JOIN dp_journal
-                                    ON d_fk_journal_id = j_id
-                                    INNER JOIN dp_subject_area
-                                    ON d_fk_subject_area_id = sa_id;
+const SELECT_ALL_DOCUMENTS_QUERY = `
+        SELECT d_id, d_title, d_type, d_year, d_abstract, d_url, d_doi, d_standard_number, j_name, sa_name
+        FROM dp_document
+        INNER JOIN dp_journal
+        ON d_fk_journal_id = j_id
+        INNER JOIN dp_subject_area
+        ON d_fk_subject_area_id = sa_id
+        ORDER BY d_year;
                                     `
 
-const SELECT_ARTICLE_AUTHORS_QUERY = (documentId) => `SELECT a_first_name, a_last_name, a_middle_name
-                                      FROM dp_author
-                                      INNER JOIN dp_document_has_dp_author
-                                      ON a_id = dha_fk_author_id
-                                      WHERE dha_fk_document_id = ${documentId};`
+const SELECT_ARTICLE_AUTHORS_QUERY = (documentId) => `
+        SELECT a_first_name, a_last_name, a_middle_name
+        FROM dp_author
+        INNER JOIN dp_document_has_dp_author
+        ON a_id = dha_fk_author_id
+        WHERE dha_fk_document_id = ${documentId};
+        `
 
 
-const SELECT_ARTICLES_BY_WORDS_QUERY = (searchWords) => `SELECT * 
-                                                            FROM dp_document
-                                                            INNER JOIN dp_journal
-                                                            ON d_fk_journal_id = j_id
-                                                            INNER JOIN dp_subject_area
-                                                            ON d_fk_subject_area_id = sa_id
-                                                            WHERE d_title LIKE '%${searchWords}%' OR d_abstract LIKE '%${searchWords}%';`
+const SELECT_ARTICLES_BY_WORDS_QUERY = (searchWords) => `
+        SELECT * 
+        FROM dp_document
+        INNER JOIN dp_journal
+        ON d_fk_journal_id = j_id
+        INNER JOIN dp_subject_area
+        ON d_fk_subject_area_id = sa_id
+        WHERE d_title LIKE '%${searchWords}%' OR d_abstract LIKE '%${searchWords}%
+        LIMIT 5';
+        `
 
 let connection = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "root",
+    user: "nicolas",
+    password: "nicolas",
     database: "db_doc_periclim",
     charset: 'UTF8',
 })
@@ -58,7 +65,7 @@ app.get('/articles', (req, res) => {
     })
 })
 
-app.get('/authors/article=:id', async  (req, res) => {
+app.get('/authors/article=:id', async (req, res) => {
     const id = parseInt(req.params.id)
     connection.query(SELECT_ARTICLE_AUTHORS_QUERY(id), (err, results) => {
         if (err) {
@@ -95,8 +102,34 @@ app.get('/articles/search/', (req, res) => {
             })
         }
     })
-
 })
+
+const SELECT_ALL_DOCUMENTS_QUERYP = (numPage, product) => `
+        SELECT d_id, d_title, d_type, d_year, d_abstract, d_url, d_doi, d_standard_number, j_name, sa_name
+        FROM dp_document
+        INNER JOIN dp_journal
+        ON d_fk_journal_id = j_id
+        INNER JOIN dp_subject_area
+        ON d_fk_subject_area_id = sa_id
+        ORDER BY d_id
+        LIMIT ${(numPage - 1) * product},5;
+        `
+
+app.get('/articles/page/:numpage', (req, res) => {
+    const numpage = parseInt(req.params.numpage)
+    let product = 5
+    numpage > 1 ? product = 5 : product = 1
+    connection.query(SELECT_ALL_DOCUMENTS_QUERYP(numpage, product), (err, results) => {
+        if (err) {
+            return res.send(err)
+        } else {
+            return res.json({
+                results
+            })
+        }
+    })
+})
+
 app.listen(4000, () => {
     console.log('Server listening on port 4000')
 })

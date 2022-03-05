@@ -12,7 +12,6 @@ const GetAuthorsByArticles = ({ articleId }) => {
           updateFetchedData(data);
         })()
       }, [api])
-    console.log(results)
     let display;
     if (results) {
         display = results.map((author) => {

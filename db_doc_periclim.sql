@@ -7,6 +7,10 @@
 -- Version du serveur : 8.0.27
 -- Version de PHP : 8.1.2
 
+CREATE DATABASE db_doc_periclim;
+
+USE db_doc_periclim;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
