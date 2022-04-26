@@ -1,45 +1,5 @@
 # Périclim
 
-- [Périclim](#périclim)
-  - [1. Mise en place du projet](#1-mise-en-place-du-projet)
-  - [2. Fonctionnalités](#2-fonctionnalités)
-    - [2.1 Connexion à la base de données MySQL (Création API REST)](#21-connexion-à-la-base-de-données-mysql-création-api-rest)
-    - [2.2 Requêtes SQL](#22-requêtes-sql)
-      - [2.2.1 Afficher tous les articles](#221-afficher-tous-les-articles)
-      - [2.2.2 Afficher les articles en fonction de la recherche](#222-afficher-les-articles-en-fonction-de-la-recherche)
-      - [2.2.3 Afficher les articles en fonction de la recherche et du filtre](#223-afficher-les-articles-en-fonction-de-la-recherche-et-du-filtre)
-      - [2.2.4 Afficher l'article en entier](#224-afficher-larticle-en-entier)
-      - [2.2.5 Afficher les auteurs en fonction de l'id de l'article](#225-afficher-les-auteurs-en-fonction-de-lid-de-larticle)
-      - [2.2.6 Afficher le nombres d'articles total (Pour la pagination)](#226-afficher-le-nombres-darticles-total-pour-la-pagination)
-      - [2.2.6 Afficher le nombres d'articles total par mot clé (Pour la pagination)](#226-afficher-le-nombres-darticles-total-par-mot-clé-pour-la-pagination)
-  - [3. Les composants](#3-les-composants)
-    - [3.1 La liste des articles](#31-la-liste-des-articles)
-      - [3.1.1 Description](#311-description)
-      - [3.1.2 Lien visuel](#312-lien-visuel)
-      - [3.1.3 Critère d'acceptons](#313-critère-dacceptons)
-      - [3.1.4 Tâche technique](#314-tâche-technique)
-      - [3.1.4 Annexes](#314-annexes)
-    - [3.2 La bar de recherche](#32-la-bar-de-recherche)
-      - [3.2.1 Description](#321-description)
-      - [3.2.2 Lien visuel](#322-lien-visuel)
-      - [3.2.3 Critère d'acceptons](#323-critère-dacceptons)
-      - [3.2.4 Tâche technique](#324-tâche-technique)
-      - [3.2.5 Annexes](#325-annexes)
-    - [3.3 La pagination](#33-la-pagination)
-      - [3.3.1 Description](#331-description)
-      - [3.3.2 Lien visuel](#332-lien-visuel)
-      - [3.3.3 Critère d'acceptons](#333-critère-dacceptons)
-      - [3.3.4 Tâche technique](#334-tâche-technique)
-      - [3.3.5 Annexes](#335-annexes)
-    - [3.4 Les filtres](#34-les-filtres)
-      - [3.4.1 Description](#341-description)
-      - [3.4.2 Lien visuel](#342-lien-visuel)
-      - [3.4.3 Critère d'acceptons](#343-critère-dacceptons)
-      - [3.4.4 Tâche technique](#344-tâche-technique)
-      - [3.4.5 Annexes](#345-annexes)
-
----
-
 ## 1. Mise en place du projet
 
 ```bash
@@ -121,7 +81,7 @@ ON d_fk_subject_area_id = sa_id;
 #### 2.2.6 Afficher le nombres d'articles total par mot clé (Pour la pagination)
 
 ```sql
-SELECT count(*) 
+SELECT count(*)
 FROM dp_document
 INNER JOIN dp_journal
 ON d_fk_journal_id = j_id
