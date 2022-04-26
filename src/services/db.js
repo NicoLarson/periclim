@@ -39,8 +39,12 @@ const COUNT_ARTICLES_BY_KEYWORD_QUERY = (searchWords) => `
 // CONNECTION A LA BDD
 let connection = mysql.createConnection({
     host: "localhost",
-    user: "nicolas",
-    password: "nicolas",
+    // Linux
+    // user: "nicolas",
+    // password: "nicolas",
+    //Windows
+    user: "root",
+    password: "root",
     database: "db_doc_periclim",
     charset: 'UTF8',
 })
