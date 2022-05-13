@@ -1,33 +1,42 @@
 import "./Pagination.css"
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import ReactPaginate from 'react-paginate';
 
-const Pagination = () => {
+
+
+const Pagination = ({ pageNumber, info, updatePageNumber }) => {
+    let pageChange = (data) => {
+        updatePageNumber(data.selected + 1);
+    };
+    const [width, setWidth] = useState(window.innerWidth);
+    const updateDimensions = () => {
+        setWidth(window.innerWidth);
+    };
+    useEffect(() => {
+        window.addEventListener("resize", updateDimensions);
+        return () => window.removeEventListener("resize", updateDimensions);
+    }, []);
+
     return (
-        <>
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">&laquo;</a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">4</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">&raquo;</a>
-                </li>
-            </ul>
-        </>
+        <ReactPaginate
+            forcePage={pageNumber === 1 ? 0 : pageNumber - 1}
+            marginPagesDisplayed={width < 576 ? 1 : 2}
+            pageRangeDisplayed={width < 576 ? 1 : 2}
+            pageCount={5}
+            onPageChange={pageChange}
+            className="pagination justify-content-center my-4 gap-4"
+            nextLabel="Next"
+            previousLabel="Prev"
+            previousClassName="btn btn-primary fs-5 prev"
+            nextClassName="btn btn-primary fs-5 next"
+            activeClassName="active"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+        />
     )
+
 }
+
 
 export default Pagination

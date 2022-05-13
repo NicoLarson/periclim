@@ -5,13 +5,15 @@ import "./assets/superhero-theme.css"
 import "./assets/index.css"
 import Search from "./components/Search/Search"
 import Card from "./components/Card/Card"
+import Pagination from "./components/Pagination/Pagination"
+
 
 const App = () => {
   let [pageNumber, updatePageNumber] = useState(1);
   let [search, setSearch] = useState("");
   let [fetchedData, updateFetchedData] = useState([])
   let { info, results } = fetchedData
-  let api = `http://localhost:3001/documents?q=${search}&?_sort=year&_order=asc`
+  let api = `http://localhost:3001/documents?q=${search}`;
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json())
@@ -19,7 +21,6 @@ const App = () => {
 
     })()
   }, [api])
-
 
 
   return (
@@ -31,6 +32,12 @@ const App = () => {
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
         <Card results={fetchedData} />
+        <Pagination
+          info={fetchedData.info}
+          pageNumber={pageNumber}
+          updatePageNumber={updatePageNumber}
+        />
+
       </main>
       <footer>
         <p>&copy;Copyright - MIT - 2022</p>
