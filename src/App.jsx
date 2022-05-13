@@ -7,17 +7,20 @@ import Search from "./components/Search/Search"
 import Card from "./components/Card/Card"
 
 const App = () => {
+  let [pageNumber, updatePageNumber] = useState(1);
+  let [search, setSearch] = useState("");
   let [fetchedData, updateFetchedData] = useState([])
   let { info, results } = fetchedData
-  let api = `http://localhost:3001/documents`
-
+  let api = `http://localhost:3001/documents?q=${search}&?_sort=year&_order=asc`
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json())
       updateFetchedData(data)
-      
+
     })()
   }, [api])
+
+
 
   return (
     <>
@@ -26,6 +29,7 @@ const App = () => {
         <h2 className="s-title">Base de données bibliographies</h2>
       </header>
       <main>
+        <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
         <Card results={fetchedData} />
       </main>
       <footer>

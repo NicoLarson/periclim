@@ -7,6 +7,8 @@ npm run start:backend
 npm run start:frontend
 ```
 
+https://github.com/typicode/json-server#getting-started
+
 ---
 
 ## 2. Fonctionnalités
@@ -15,73 +17,6 @@ npm run start:frontend
 - [x] Faire une recherche
 - [ ] Importer des bibliographies dans la bdd
 - [ ] Exporter une liste de recherche au format ...
-
-### 2.1 Connexion à la base de données MySQL (Création API REST)
-
-### 2.2 Requêtes SQL
-
-- [] Créer des vues
-
-#### 2.2.1 Afficher tous les articles
-
-```sql
-SELECT d_title, d_type, d_year, d_abstract, d_url, d_doi, d_standard_number, j_name, sa_name
-FROM dp_document
-INNER JOIN dp_journal
-ON d_fk_journal_id = j_id
-INNER JOIN dp_subject_area
-ON d_fk_subject_area_id = sa_id;
-```
-
-#### 2.2.2 Afficher les articles en fonction de la recherche
-
-#### 2.2.3 Afficher les articles en fonction de la recherche et du filtre
-
-#### 2.2.4 Afficher l'article en entier
-
-```sql
-SELECT d_title, d_type, d_year, d_abstract, d_url, d_doi, d_standard_number, j_name, sa_name
-FROM dp_document
-INNER JOIN dp_journal
-ON d_fk_journal_id = j_id
-INNER JOIN dp_subject_area
-ON d_fk_subject_area_id = sa_id
-WHERE d_id = 1;
-```
-
-#### 2.2.5 Afficher les auteurs en fonction de l'id de l'article
-
-```sql
-SELECT a_first_name, a_last_name, a_middle_name
-FROM dp_author
-INNER JOIN dp_document_has_dp_author
-ON a_id = dha_fk_author_id
-WHERE dha_fk_document_id = 1;
-```
-
-#### 2.2.6 Afficher le nombres d'articles total (Pour la pagination)
-
-```sql
-SELECT COUNT(d_id)
-FROM dp_document
-INNER JOIN dp_journal
-ON d_fk_journal_id = j_id
-INNER JOIN dp_subject_area
-ON d_fk_subject_area_id = sa_id;
-```
-
-#### 2.2.6 Afficher le nombres d'articles total par mot clé (Pour la pagination)
-
-```sql
-SELECT count(*)
-FROM dp_document
-INNER JOIN dp_journal
-ON d_fk_journal_id = j_id
-INNER JOIN dp_subject_area
-ON d_fk_subject_area_id = sa_id
-WHERE d_title LIKE '%irr%' OR d_abstract LIKE '%irr% '
-LIMIT 5;
-```
 
 ---
 
@@ -193,3 +128,72 @@ Le but est d'afficher les articles par années , par auteurs ...
 - [ ] Fonction pour effacer les filtrer et rafraîchir la page
 
 #### 3.4.5 Annexes
+
+---
+
+### 2.1 Connexion à la base de données MySQL (Création API REST)
+
+### 2.2 Requêtes SQL
+
+- [] Créer des vues
+
+#### 2.2.1 Afficher tous les articles
+
+```sql
+SELECT d_title, d_type, d_year, d_abstract, d_url, d_doi, d_standard_number, j_name, sa_name
+FROM dp_document
+INNER JOIN dp_journal
+ON d_fk_journal_id = j_id
+INNER JOIN dp_subject_area
+ON d_fk_subject_area_id = sa_id;
+```
+
+#### 2.2.2 Afficher les articles en fonction de la recherche
+
+#### 2.2.3 Afficher les articles en fonction de la recherche et du filtre
+
+#### 2.2.4 Afficher l'article en entier
+
+```sql
+SELECT d_title, d_type, d_year, d_abstract, d_url, d_doi, d_standard_number, j_name, sa_name
+FROM dp_document
+INNER JOIN dp_journal
+ON d_fk_journal_id = j_id
+INNER JOIN dp_subject_area
+ON d_fk_subject_area_id = sa_id
+WHERE d_id = 1;
+```
+
+#### 2.2.5 Afficher les auteurs en fonction de l'id de l'article
+
+```sql
+SELECT a_first_name, a_last_name, a_middle_name
+FROM dp_author
+INNER JOIN dp_document_has_dp_author
+ON a_id = dha_fk_author_id
+WHERE dha_fk_document_id = 1;
+```
+
+#### 2.2.6 Afficher le nombres d'articles total (Pour la pagination)
+
+```sql
+SELECT COUNT(d_id)
+FROM dp_document
+INNER JOIN dp_journal
+ON d_fk_journal_id = j_id
+INNER JOIN dp_subject_area
+ON d_fk_subject_area_id = sa_id;
+```
+
+#### 2.2.6 Afficher le nombres d'articles total par mot clé (Pour la pagination)
+
+```sql
+SELECT count(*)
+FROM dp_document
+INNER JOIN dp_journal
+ON d_fk_journal_id = j_id
+INNER JOIN dp_subject_area
+ON d_fk_subject_area_id = sa_id
+WHERE d_title LIKE '%irr%' OR d_abstract LIKE '%irr% '
+LIMIT 5;
+```
