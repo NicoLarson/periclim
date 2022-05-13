@@ -16,10 +16,9 @@ const Card = ({ results }) => {
 
                                 <li class="list-group-item"><strong>Auteurs:</strong>
                                     <ul className="author-list">
-                                        <Authors authors={document.author} />
-                                    </ul>
+                                        {document.author ? <Authors authors={document.author} /> : "?"}</ul>
                                 </li>
-                                <li class="list-group-item"><strong>Année: </strong>{JSON.stringify(document.issued).slice(17, 21)}
+                                <li class="list-group-item"><strong>Année: </strong>{JSON.stringify(document.issued) ? JSON.stringify(document.issued).slice(17, 21) : "?"}
                                 </li>
                                 {document.ISSN ? <li class="list-group-item"><strong>ISSN: </strong>{document.ISSN}</li> : null}
                             </ul>
