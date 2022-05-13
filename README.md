@@ -3,16 +3,8 @@
 ## 1. Mise en place du projet
 
 ```bash
-npx create-react-app .
-
-npm install react-router-dom
-npm install react-paginate --save
-npm install nodemon
-npm install express
-npm install cors
-npm install mysql
-
-npm start
+npm run start:backend
+npm run start:frontend
 ```
 
 ---
