@@ -6,6 +6,7 @@ import "./assets/index.css"
 import Search from "./components/Search/Search"
 import Card from "./components/Card/Card"
 import Pagination from "./components/Pagination/Pagination"
+import Filter from "./components/Filter/Filter"
 
 
 const App = () => {
@@ -13,6 +14,10 @@ const App = () => {
   let [search, setSearch] = useState("");
   let [fetchedData, updateFetchedData] = useState([])
   let { info, results } = fetchedData
+  let [type, updateType] = useState("");
+  let [year, updateYear] = useState("");
+  let [author, updateAuthor] = useState("");
+
 
   let api = `http://localhost:3001/documents?q=${search}&_page=${pageNumber}`;
   useEffect(() => {
@@ -30,6 +35,14 @@ const App = () => {
       </header>
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
+        <Filter
+          pageNumber={pageNumber}
+          type={type}
+          updateType={updateType}
+          updateYear={updateYear}
+          updateAuthor={updateAuthor}
+        />
+
         <Card results={fetchedData} />
         <Pagination
           search={search}
