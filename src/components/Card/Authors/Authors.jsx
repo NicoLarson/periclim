@@ -2,10 +2,10 @@ import React from "react";
 
 const Authors = ({ authors }) => {
     let display
-    display = authors.map((author) => {
+    display = authors.map((author,index) => {
         return (
             <>
-                <li>{author.family} {author.given}</li>
+                <li key={index}>{author.family} {author.given};</li>
             </>
         )
     })

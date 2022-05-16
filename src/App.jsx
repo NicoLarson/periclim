@@ -13,15 +13,14 @@ const App = () => {
   let [search, setSearch] = useState("");
   let [fetchedData, updateFetchedData] = useState([])
   let { info, results } = fetchedData
-  let api = `http://localhost:3001/documents?q=${search}`;
+
+  let api = `http://localhost:3001/documents?q=${search}&_page=${pageNumber}`;
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json())
       updateFetchedData(data)
-
     })()
   }, [api])
-
 
   return (
     <>
@@ -33,7 +32,7 @@ const App = () => {
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
         <Card results={fetchedData} />
         <Pagination
-          info={fetchedData.info}
+          search={search}
           pageNumber={pageNumber}
           updatePageNumber={updatePageNumber}
         />

@@ -12,7 +12,7 @@ const Search = ({ setSearch, updatePageNumber }) => {
                     updatePageNumber(1);
                     setSearch(e.target.value);
                 }}
-                class="form-control form-control-lg search-bar"
+                className="form-control form-control-lg search-bar"
                 placeholder="Rechercher..."
                 type="text"
             />

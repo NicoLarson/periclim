@@ -5,37 +5,37 @@ import Authors from "./Authors/Authors";
 const Card = ({ results }) => {
     let display;
     if (results) {
-        display = results.map((document) => {
+        display = results.map((document, index) => {
             return (
                 <>
-                    <li class="card">
-                        <h3 class="card-header">{document.title}</h3>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><strong>Type: </strong>{document.type}</li>
+                    <li className="card">
+                        <h3 className="card-header">{document.title}</h3>
+                        <div className="card-body">
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item"><strong>Type: </strong>{document.type}</li>
 
-                                <li class="list-group-item"><strong>Auteurs:</strong>
+                                <li className="list-group-item"><strong>Auteurs:</strong>
                                     <ul className="author-list">
                                         {document.author ? <Authors authors={document.author} /> : "?"}</ul>
                                 </li>
-                                <li class="list-group-item"><strong>Année: </strong>{JSON.stringify(document.issued) ? JSON.stringify(document.issued).slice(17, 21) : "?"}
+                                <li className="list-group-item"><strong>Année: </strong>{JSON.stringify(document.issued) ? JSON.stringify(document.issued).slice(17, 21) : "?"}
                                 </li>
-                                {document.ISSN ? <li class="list-group-item"><strong>ISSN: </strong>{document.ISSN}</li> : null}
+                                {document.ISSN ? <li className="list-group-item"><strong>ISSN: </strong>{document.ISSN}</li> : null}
                             </ul>
 
-                            <div class="card-body">
-                                <a href={document.DOI} class="btn btn-success">DOI</a>
+                            <div className="card-body">
+                                <a href={document.DOI} className="btn btn-success">DOI</a>
                             </div>
 
-                            <div class="accordion">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id={"heading" + document.ISSN}>
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#collapse" + document.ISSN} aria-expanded="false" aria-controls={"collapse" + document.ISSN}>
+                            <div className="accordion">
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id={"heading" + index}>
+                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#collapse" + index} aria-expanded="false" aria-controls={"collapse" + index}>
                                             Extrait
                                         </button>
                                     </h2>
-                                    <div id={"collapse" + document.ISSN} class="accordion-collapse collapse" aria-labelledby={"heading" + document.ISSN} data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
+                                    <div id={"collapse" + index} className="accordion-collapse collapse" aria-labelledby={"heading" + index} data-bs-parent="#accordionExample">
+                                        <div className="accordion-body">
                                             {document.abstract}
                                         </div>
                                     </div>
