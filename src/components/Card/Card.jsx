@@ -12,21 +12,31 @@ const Card = ({ results }) => {
                         <h3 className="card-header">{document.title}</h3>
                         <div className="card-body">
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item"><strong>Type: </strong>{document.type}</li>
+                                <li className="list-group-item"><strong>Titre de la publication: </strong>{document.publicationTitle}</li>
 
-                                <li className="list-group-item"><strong>Auteurs:</strong>
-                                    <ul className="author-list">
-                                        {document.author ? <Authors authors={document.author} /> : "?"}</ul>
+                                <li className="list-group-item"><strong>Type: </strong>{document.itemType}</li>
+                                <li className="list-group-item"><strong>Langue: </strong>{document.Language}</li>
+                                <li className="list-group-item"><strong>Auteurs:</strong>{document.authors.split(";").map((author, index) => { return <span className="badge bg-dark" key={index}>{author}</span> })}
+
                                 </li>
-                                <li className="list-group-item"><strong>Année: </strong>{JSON.stringify(document.issued) ? JSON.stringify(document.issued).slice(17, 21) : "?"}
+                                <li className="list-group-item"><strong>Année: </strong>
+                                    {
+                                        document.year
+                                    }
                                 </li>
                                 {document.ISSN ? <li className="list-group-item"><strong>ISSN: </strong>{document.ISSN}</li> : null}
                             </ul>
 
                             <div className="card-body">
-                                <a href={document.DOI} className="btn btn-success">DOI</a>
+                                <a href={document.Url} className="btn btn-success">Voir l'article</a>
                             </div>
-
+                            <li className="list-group-item"><strong>Mots clés: </strong>
+                                {
+                                    document.tags.split(";").map((tag, index) => {
+                                        return <span className="badge rounded-pill bg-info" key={index}>{tag}</span>
+                                    })
+                                }
+                            </li>
                             <div className="accordion">
                                 <div className="accordion-item">
                                     <h2 className="accordion-header" id={"heading" + index}>
