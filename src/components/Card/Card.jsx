@@ -1,6 +1,5 @@
 import React from "react";
 import "./Card.css"
-import Authors from "./Authors/Authors";
 
 const Card = ({ results }) => {
     let display;

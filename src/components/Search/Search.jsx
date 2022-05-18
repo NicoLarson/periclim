@@ -2,9 +2,9 @@ import React from "react";
 import './Search.css'
 
 const Search = ({ setSearch, updatePageNumber }) => {
-    let searchBtn = (e) => {
-        e.preventDefault();
-    };
+    // let searchBtn = (e) => {
+    //     e.preventDefault();
+    // };
     return (
         <form>
             <input
