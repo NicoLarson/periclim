@@ -1,13 +1,13 @@
 {
-  "main.css": "/periclim/static/css/main.9c46f108.chunk.css",
-  "main.js": "/periclim/static/js/main.0ab265b0.chunk.js",
-  "main.js.map": "/periclim/static/js/main.0ab265b0.chunk.js.map",
-  "static/js/1.c3943132.chunk.js": "/periclim/static/js/1.c3943132.chunk.js",
-  "static/js/1.c3943132.chunk.js.map": "/periclim/static/js/1.c3943132.chunk.js.map",
+  "main.css": "/periclim/static/css/main.b4ad8b56.chunk.css",
+  "main.js": "/periclim/static/js/main.4af8c409.chunk.js",
+  "main.js.map": "/periclim/static/js/main.4af8c409.chunk.js.map",
+  "static/js/1.b48771aa.chunk.js": "/periclim/static/js/1.b48771aa.chunk.js",
+  "static/js/1.b48771aa.chunk.js.map": "/periclim/static/js/1.b48771aa.chunk.js.map",
   "runtime~main.js": "/periclim/static/js/runtime~main.fdfc9cb7.js",
   "runtime~main.js.map": "/periclim/static/js/runtime~main.fdfc9cb7.js.map",
-  "static/css/main.9c46f108.chunk.css.map": "/periclim/static/css/main.9c46f108.chunk.css.map",
+  "static/css/main.b4ad8b56.chunk.css.map": "/periclim/static/css/main.b4ad8b56.chunk.css.map",
   "index.html": "/periclim/index.html",
-  "precache-manifest.5d8d3628ffc1996b48f8208a57e6c1d6.js": "/periclim/precache-manifest.5d8d3628ffc1996b48f8208a57e6c1d6.js",
+  "precache-manifest.5e418f9806b6315730c3b885a187e41c.js": "/periclim/precache-manifest.5e418f9806b6315730c3b885a187e41c.js",
   "service-worker.js": "/periclim/service-worker.js"
 }
