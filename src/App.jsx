@@ -14,7 +14,7 @@ const App = () => {
   let [fetchedData, updateFetchedData] = useState([])
 
 
-  let api = `http://localhost:3001/documents?q=${search}&_page=${pageNumber}`;
+  let api = `https://periclim-api.herokuapp.com/documents?q=${search}&_page=${pageNumber}`;
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json())
