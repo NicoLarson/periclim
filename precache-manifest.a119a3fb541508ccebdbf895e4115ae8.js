@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "4af8c409c41c02671b1c",
+    "revision": "bb029d0c79cd1ded0c86",
     "url": "/periclim/static/css/main.b4ad8b56.chunk.css"
   },
   {
-    "revision": "4af8c409c41c02671b1c",
-    "url": "/periclim/static/js/main.4af8c409.chunk.js"
+    "revision": "bb029d0c79cd1ded0c86",
+    "url": "/periclim/static/js/main.bb029d0c.chunk.js"
   },
   {
     "revision": "b48771aaf3a9334ac5e1",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/periclim/static/js/runtime~main.fdfc9cb7.js"
   },
   {
-    "revision": "619e5ca738c0c193f0ded3548752b44f",
+    "revision": "9dc015354ac883e11315ca067df98e71",
     "url": "/periclim/index.html"
   }
 ];
