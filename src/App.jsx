@@ -13,8 +13,8 @@ const App = () => {
   let [search, setSearch] = useState("");
   let [fetchedData, updateFetchedData] = useState([])
 
-
-  let api = `https://periclim-api.herokuapp.com/documents?q=${search}&_page=${pageNumber}`;
+  let limitPerPage = 10
+  let api = `https://periclim-api.herokuapp.com/documents?q=${search}&_page=${pageNumber}&_limit=${limitPerPage}`;
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json())
@@ -30,6 +30,8 @@ const App = () => {
       </header>
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
+        
+        
 
         <Card results={fetchedData} />
         <Pagination

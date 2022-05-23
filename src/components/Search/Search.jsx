@@ -2,11 +2,11 @@ import React from "react";
 import './Search.css'
 
 const Search = ({ setSearch, updatePageNumber }) => {
-    // let searchBtn = (e) => {
-    //     e.preventDefault();
-    // };
+    let searchBtn = (e) => {
+        e.preventDefault();
+    };
     return (
-        <form>
+        <form className="search-bar">
             <input
                 onChange={(e) => {
                     updatePageNumber(1);
@@ -16,7 +16,7 @@ const Search = ({ setSearch, updatePageNumber }) => {
                 placeholder="Rechercher..."
                 type="text"
             />
-
+            <input class="btn btn-primary"type="submit" value="Rechercher" onClick={searchBtn} />
         </form>
     );
 

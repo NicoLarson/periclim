@@ -2,11 +2,9 @@ import "./Pagination.css"
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
-
-
 const Pagination = ({ pageNumber, updatePageNumber, search }) => {
     let [fetchedData, updateFetchedData] = useState([])
-    let api = `http://localhost:3001/documents?q=${search}`;
+    let api = `https://periclim-api.herokuapp.com/documents?q=${search}`;
     useEffect(() => {
         (async function () {
             let data = await fetch(api).then((res) => res.json())
@@ -15,7 +13,6 @@ const Pagination = ({ pageNumber, updatePageNumber, search }) => {
     }, [api])
     let totalOfElement = fetchedData.length
     let pageCount = Math.ceil(totalOfElement / 10)
-
     let pageChange = (data) => {
         updatePageNumber(data.selected + 1);
     };
@@ -30,8 +27,6 @@ const Pagination = ({ pageNumber, updatePageNumber, search }) => {
     return (
         <ReactPaginate
             forcePage={pageNumber === 1 ? 0 : pageNumber - 1}
-            marginPagesDisplayed={width < 576 ? 1 : 2}
-            pageRangeDisplayed={width < 576 ? 1 : 2}
             pageCount={pageCount}
             onPageChange={pageChange}
             className="pagination justify-content-center my-4 gap-4"
@@ -44,8 +39,5 @@ const Pagination = ({ pageNumber, updatePageNumber, search }) => {
             pageLinkClassName="page-link"
         />
     )
-
 }
-
-
 export default Pagination

@@ -1,4 +1,5 @@
-.search-bar {
+form.search-bar {
+  display: flex;
   margin: 4rem auto 4rem;
   max-width: 60%;
 }
