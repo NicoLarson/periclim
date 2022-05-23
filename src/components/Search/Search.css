@@ -1,14 +1,13 @@
 form.search-bar {
   display: flex;
-  margin: 4rem auto 4rem;
+  margin: 4rem auto 1.2rem;
   max-width: 60%;
 }
 
 /* MOBILE */
 
-@media screen and (max-width: 750px) {
-  .searchBar {
-    margin: 0 auto 4rem;
-    max-width: 80%;
+@media screen and (max-width: 768px) {
+  form.search-bar {
+    max-width: 90%;
   }
 }

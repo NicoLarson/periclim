@@ -1,8 +1,14 @@
 .pagination {
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
+.pagination li {
+  margin: .2rem 0.4rem;
+}
+
 li.btn.btn-primary.prev a,
-li.btn.btn-primary.next a{
-    color: #fafafa;
+li.btn.btn-primary.next a {
+  color: #fafafa;
 }

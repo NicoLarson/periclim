@@ -32,7 +32,7 @@ const Card = ({ results }) => {
                             <li className="list-group-item"><strong>Mots clés: </strong>
                                 {
                                     document.tags.split(";").map((tag, index) => {
-                                        return <span className="badge rounded-pill bg-info" key={index}>{tag}</span>
+                                        return <span className="badge bg-primary" key={index}>{tag}</span>
                                     })
                                 }
                             </li>
@@ -45,7 +45,7 @@ const Card = ({ results }) => {
                                     </h2>
                                     <div id={"collapse" + index} className="accordion-collapse collapse" aria-labelledby={"heading" + index} data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
-                                            {document.abstract}
+                                            <p className="abstract">  {document.abstract} </p>
                                         </div>
                                     </div>
                                 </div>
