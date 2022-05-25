@@ -31,7 +31,7 @@ const App = () => {
       </header>
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
-        <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage}/>
+        <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage} />
 
 
         <Card results={fetchedData} />
@@ -44,7 +44,7 @@ const App = () => {
 
       </main>
       <footer>
-        <p>&copy;Copyright - MIT - 2022</p>
+        <p style={{ fontSize: .8 + 'rem'}}>&copy;Copyright - MIT - 2022</p>
       </footer>
     </>
   )
