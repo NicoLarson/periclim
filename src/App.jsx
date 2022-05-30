@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 
 import "bootstrap/dist/js/bootstrap"
 import "./assets/superhero-theme.css"
-import "./assets/index.css"
+import "./App.css"
 import Search from "./components/Search/Search"
 import Card from "./components/Card/Card"
 import Pagination from "./components/Pagination/Pagination"
@@ -12,10 +12,18 @@ import Filter from "./components/Filter/Filter"
 const App = () => {
   let [pageNumber, updatePageNumber] = useState(1);
   let [search, setSearch] = useState("");
+  let [year, setYearSearch] = useState("");
   let [fetchedData, updateFetchedData] = useState([])
   let [limitPerPage, setLimitPerPage] = useState(10);
 
-  let api = `https://periclim-api.herokuapp.com/documents?q=${search}&_limit=${limitPerPage}&_page=${pageNumber}&_sort=year&_order=desc`;
+  let yearString
+
+  if (!year){
+    yearString = ""
+  } else {
+    yearString = `&year=${year}`
+  }
+  let api = `https://periclim-api.herokuapp.com/documents?q=${search}&_limit=${limitPerPage}&_page=${pageNumber}&_sort=year&_order=desc${yearString}`;
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json())
@@ -32,14 +40,17 @@ const App = () => {
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
         <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage} />
-        <Filter search={search} limitPerPage={limitPerPage} pageNumber={pageNumber}
-        />
-        <Card results={fetchedData} />
+        <div className="card-filter-container">
+          <Filter setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber}
+          />
+          <Card results={fetchedData} />
+        </div>
         <Pagination
           search={search}
           pageNumber={pageNumber}
           updatePageNumber={updatePageNumber}
           limitPerPage={limitPerPage}
+          year={year}
         />
 
       </main>

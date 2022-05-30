@@ -61,7 +61,7 @@ const Card = ({ results }) => {
     }
 
 
-    return <>{display}</>;
+    return <ul className="cards-container">{display}</ul>;
 }
 export default Card
 
