@@ -7,7 +7,7 @@ import Search from "./components/Search/Search"
 import Card from "./components/Card/Card"
 import Pagination from "./components/Pagination/Pagination"
 import LimitPerPage from "./components/Filter/LimitPerPage"
-
+import Filter from "./components/Filter/Filter"
 
 const App = () => {
   let [pageNumber, updatePageNumber] = useState(1);
@@ -32,8 +32,8 @@ const App = () => {
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
         <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage} />
-
-
+        <Filter search={search} limitPerPage={limitPerPage} pageNumber={pageNumber}
+        />
         <Card results={fetchedData} />
         <Pagination
           search={search}
@@ -44,7 +44,7 @@ const App = () => {
 
       </main>
       <footer>
-        <p style={{ fontSize: .8 + 'rem'}}>&copy;Copyright - MIT - 2022</p>
+        <p style={{ fontSize: .8 + 'rem' }}>&copy;Copyright - MIT - 2022</p>
       </footer>
     </>
   )
