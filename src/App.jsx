@@ -17,12 +17,12 @@ const App = () => {
   let [limitPerPage, setLimitPerPage] = useState(10);
 
   let yearString
-
   if (!year){
     yearString = ""
   } else {
     yearString = `&year=${year}`
   }
+
   let api = `https://periclim-api.herokuapp.com/documents?q=${search}&_limit=${limitPerPage}&_page=${pageNumber}&_sort=year&_order=desc${yearString}`;
   useEffect(() => {
     (async function () {

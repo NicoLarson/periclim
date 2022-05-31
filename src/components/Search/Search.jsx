@@ -16,7 +16,7 @@ const Search = ({ setSearch, updatePageNumber }) => {
                 placeholder="Rechercher..."
                 type="text"
             />
-            <input class="btn btn-primary"type="submit" value="Rechercher" onClick={searchBtn} />
+            <input class="btn btn-primary" type="submit" value="Rechercher" onClick={searchBtn} />
         </form>
     );
 

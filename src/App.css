@@ -12,18 +12,13 @@ h1 {
 }
 
 div.card-filter-container {
-  display: flex;
-  width: 100vw;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  background-color: red;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
 }
 
 .articlesContainer {
   display: grid;
   grid-template-columns: 30% 40% 30%;
-  align-items: flex-start;
-  justify-items: center;
 }
 
 .articlesCardsContainer {
@@ -47,4 +42,10 @@ footer {
   .desktop-only {
     display: none;
   }
+div.card-filter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 }
