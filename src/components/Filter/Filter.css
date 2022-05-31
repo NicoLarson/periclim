@@ -2,15 +2,9 @@
   margin: 2rem auto;
   max-width: 14rem;
   max-height: 100%;
+  border: 1px solid #ccc;
+  transition: all 0.4s ease-in-out;
 }
-
-.radioContainer {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.radioContainer label {
-  margin: 0.5rem;
+.filter:hover {
+  border: 1px solid #ffc107;
 }

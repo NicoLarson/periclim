@@ -6,7 +6,7 @@ import "./App.css"
 import Search from "./components/Search/Search"
 import Card from "./components/Card/Card"
 import Pagination from "./components/Pagination/Pagination"
-import LimitPerPage from "./components/Filter/LimitPerPage"
+import LimitPerPage from "./components/LimitPerPage/LimitPerPage"
 import Filter from "./components/Filter/Filter"
 
 const App = () => {

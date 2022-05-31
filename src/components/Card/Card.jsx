@@ -2,6 +2,7 @@ import React from "react";
 import "./Card.css"
 
 const Card = ({ results }) => {
+
     let display;
     if (results) {
         display = results.map((document, index) => {

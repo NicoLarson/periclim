@@ -5,6 +5,11 @@
 }
 .card {
   margin: 2rem 0;
+  border: 1px solid #ccc;
+  transition: all .4s ease-in-out;
+}
+.card:hover{
+  border: 1px solid #4c9be8;
 }
 
 .author-list {
