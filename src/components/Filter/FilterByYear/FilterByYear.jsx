@@ -3,7 +3,7 @@ import "./FilterByYear.css"
 
 const FilterByYear = ({ fetchedData, setYearSearch }) => {
 
-    let years = fetchedData.map((item) => item.year)
+    let years = fetchedData.map((item) => item.publication_year)
     let uniqueItems = [...new Set(years.sort((a, b) => b - a))]
     const clearBtn = (e) => {
         e.preventDefault();

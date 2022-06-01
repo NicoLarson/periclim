@@ -1,15 +1,19 @@
 import React from "react";
+import "./Authors.css"
 
-const Authors = ({ authors }) => {
+const Authors = ({ authorsArray }) => {
     let display
-    display = authors.map((author,index) => {
+
+    display = authorsArray.map((author, index) => {
+        console.log("🚀 ~ file: Authors.jsx ~ line 14 ~ display=authors.map ~ authors", author)
+
         return (
             <>
-                <li key={index}>{author.family} {author.given};</li>
+                <li className="author badge rounded-pill bg-info" key={index}>{author.firstName}, {author.lastName}</li>
             </>
         )
     })
-    return <>{display}</>;
+    return <ul className="authorList">{display}</ul>;
 }
 
 export default Authors;

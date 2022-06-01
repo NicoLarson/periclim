@@ -1,5 +1,7 @@
 import React from "react";
 import "./Card.css"
+import Authors from "./Authors/Authors";
+import Tags from "./Tags/Tags";
 
 const Card = ({ results }) => {
 
@@ -12,30 +14,24 @@ const Card = ({ results }) => {
                         <h3 className="card-header">{document.title}</h3>
                         <div className="card-body">
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item"><strong>Titre de la publication: </strong>{document.publicationTitle}</li>
+                                <li className="list-group-item"><strong>Titre de la publication: </strong>{document.publication_title}</li>
 
-                                <li className="list-group-item"><strong>Type: </strong>{document.itemType}</li>
-                                <li className="list-group-item"><strong>Langue: </strong>{document.Language}</li>
-                                <li className="list-group-item"><strong>Auteurs:</strong>{document.authors.split(";").map((author, index) => { return <span className="badge bg-dark" key={index}>{author}</span> })}
-
-                                </li>
+                                <li className="list-group-item"><strong>Type: </strong>{document.item_type}</li>
+                                <li className="list-group-item"><strong>Langue: </strong>{document.language}</li>
+                                <li className="list-group-item"><strong>Auteurs: </strong> <Authors authorsArray={document.author} /> </li>
                                 <li className="list-group-item"><strong>Année: </strong>
                                     {
-                                        document.year
+                                        document.publication_year
                                     }
                                 </li>
-                                {document.ISSN ? <li className="list-group-item"><strong>ISSN: </strong>{document.ISSN}</li> : null}
+                                {document.issn ? <li className="list-group-item"><strong>ISSN: </strong>{document.issn}</li> : null}
                             </ul>
 
                             <div className="card-body">
-                                <a href={document.Url} className="btn btn-success">Voir l'article</a>
+                                <a href={document.url} className="btn btn-success" target="_blank">Voir l'article</a>
                             </div>
                             <li className="list-group-item"><strong>Mots clés: </strong>
-                                {
-                                    document.tags.split(";").map((tag, index) => {
-                                        return <span className="badge bg-primary" key={index}>{tag}</span>
-                                    })
-                                }
+                                <Tags tagsArray={document.automatic_tags} />
                             </li>
                             <div className="accordion">
                                 <div className="accordion-item">
@@ -46,7 +42,7 @@ const Card = ({ results }) => {
                                     </h2>
                                     <div id={"collapse" + index} className="accordion-collapse collapse" aria-labelledby={"heading" + index} data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
-                                            <p className="abstract">  {document.abstract} </p>
+                                            <p className="abstract">  {document.abstract_note} </p>
                                         </div>
                                     </div>
                                 </div>
