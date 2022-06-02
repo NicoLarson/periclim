@@ -51,6 +51,7 @@ const App = () => {
           updatePageNumber={updatePageNumber}
           limitPerPage={limitPerPage}
           year={year}
+          yearString={yearString}
         />
 
       </main>
