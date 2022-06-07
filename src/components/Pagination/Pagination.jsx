@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 
 const Pagination = ({ pageNumber, updatePageNumber, search, limitPerPage, year ,yearString}) => {
     let [fetchedData, updateFetchedData] = useState([])
-    let api = `https://periclim-api.herokuapp.com/documents?_sort=year&_order=desc&q=${search}&year=${year}${yearString}`;
+    let api = `https://periclim-api.herokuapp.com/documents?_sort=year&_order=desc&q=${search}${yearString}`;
     useEffect(() => {
         (async function () {
             let data = await fetch(api).then((res) => res.json())

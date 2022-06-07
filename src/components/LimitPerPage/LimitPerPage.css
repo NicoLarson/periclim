@@ -16,6 +16,6 @@ div.limit-per-page > div button {
 @media screen and (max-width: 768px) {
   div.limit-per-page {
     max-width: 100%;
- align-items: center;
+    align-items: center;
   }
 }

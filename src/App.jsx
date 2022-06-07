@@ -41,8 +41,7 @@ const App = () => {
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
         <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage} />
         <div className="card-filter-container">
-          <Filter setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber}
-          />
+          <Filter setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber}          />
           <Card results={fetchedData} />
         </div>
         <Pagination

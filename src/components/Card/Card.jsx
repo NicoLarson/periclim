@@ -26,13 +26,12 @@ const Card = ({ results }) => {
                                 </li>
                                 {document.issn ? <li className="list-group-item"><strong>ISSN: </strong>{document.issn}</li> : null}
                             </ul>
-
-                            <div className="card-body">
-                                <a href={document.url} className="btn btn-success" target="_blank">Voir l'article</a>
-                            </div>
                             <li className="list-group-item"><strong>Mots clés: </strong>
                                 <Tags tagsArray={document.automatic_tags} />
                             </li>
+                            <div className="read-article-btn card-body">
+                                <a href={document.url} className="btn btn-success" target="_blank">Voir l'article</a>
+                            </div>
                             <div className="accordion">
                                 <div className="accordion-item">
                                     <h2 className="accordion-header" id={"heading" + index}>

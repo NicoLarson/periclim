@@ -1,11 +1,11 @@
 .fieldsetFilterByYear .radioContainer {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+
 }
 
 .fieldsetFilterByYear .radioContainer label {
-  margin: .8rem;
+  margin: .4rem;
 }
