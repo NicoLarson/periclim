@@ -2,6 +2,7 @@
   max-width: 100%;
   margin: 0;
   padding: 0;
+  grid-area: b;
 }
 .card {
   margin: 2rem 0;

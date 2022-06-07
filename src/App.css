@@ -14,16 +14,8 @@ h1 {
 div.card-filter-container {
   display: grid;
   grid-template-columns: 20% 60% 20%;
-  grid-template-rows: 20% 60% 20%;
-}
-
-.articlesContainer {
-  display: grid;
-  grid-template-columns: 30% 40% 30%;
-}
-
-.articlesCardsContainer {
-  padding: 0;
+  grid-template-areas: "a b"
+                        ". b";
 }
 
 footer {
@@ -43,10 +35,10 @@ footer {
   .desktop-only {
     display: none;
   }
-div.card-filter-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  div.card-filter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

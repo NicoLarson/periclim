@@ -3,6 +3,9 @@
   max-width: 14rem;
   border: 1px solid #ccc;
   transition: all 0.4s ease-in-out;
+  grid-row-end: auto;
+  grid-area: a;
+
 }
 .filter:hover {
   border: 1px solid #ffc107;
