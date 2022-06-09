@@ -3,13 +3,14 @@ import "./Filter.css"
 import FilterByYear from "./FilterByYear/FilterByYear"
 import FilterByKeyword from "./FilterByKeyword/FilterByKeyword"
 
-const Filter = ({ search, setYearSearch }) => {
+const Filter = ({ search, setYearSearch, updateTotalDocuments }) => {
     let [fetchedData, updateFetchedData] = useState([])
 
     let api = `https://periclim-api.herokuapp.com/documents?q=${search}`;
     useEffect(() => {
         (async function () {
             let data = await fetch(api).then((res) => res.json())
+            updateTotalDocuments(data.length)
             updateFetchedData(data)
         })()
     }, [api])

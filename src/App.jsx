@@ -15,9 +15,10 @@ const App = () => {
   let [year, setYearSearch] = useState("");
   let [fetchedData, updateFetchedData] = useState([])
   let [limitPerPage, setLimitPerPage] = useState(10);
+  let [totalDocuments, updateTotalDocuments] = useState(0)
 
   let yearString
-  if (!year){
+  if (!year) {
     yearString = ""
   } else {
     yearString = `&publication_year=${year}`
@@ -39,9 +40,10 @@ const App = () => {
       </header>
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
+        <p className="total-documents text-info">{totalDocuments} documents</p>
         <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage} />
         <div className="card-filter-container">
-          <Filter setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber}          />
+          <Filter setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber} updateTotalDocuments={updateTotalDocuments}/>
           <Card results={fetchedData} />
         </div>
         <Pagination

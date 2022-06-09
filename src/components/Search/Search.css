@@ -3,7 +3,19 @@ form.search-bar {
   margin: 4rem auto 1.2rem;
   max-width: 60%;
 }
+form.search-bar button:hover{
+  cursor: unset;
+}
+form.search-bar button:focus{
+  outline: none;
+}
+form.search-bar svg{
+  width: 1.6rem;
+}
 
+form.search-bar svg path{
+  fill: #fafafa;
+}
 /* MOBILE */
 
 @media screen and (max-width: 768px) {

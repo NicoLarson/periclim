@@ -8,25 +8,31 @@ const FilterByYear = ({ fetchedData, setYearSearch }) => {
     const clearBtn = (e) => {
         e.preventDefault();
         setYearSearch("")
+        document.querySelectorAll('.radioContainer__item input').forEach(item => item.checked = false)
     }
+
+    let totalByYear = fetchedData.reduce((acc, curr) => {
+        if (acc[curr.publication_year]) {
+            acc[curr.publication_year] += 1
+        } else {
+            acc[curr.publication_year] = 1
+        }
+        return acc
+    }
+        , {})
+
     return (
         <fieldset className="fieldsetFilterByYear">
-            <legend>Recherche par année</legend>
+            <legend>Par année</legend>
             <div className="radioContainer">
                 {uniqueItems.map((item) => (
-                    <div key={item}>
-                        <label htmlFor={item}>
-                            <input
-                                type="radio"
-                                id={item}
-                                name="year"
-                                value={item}
-                                onChange={(e) => setYearSearch(e.target.value)}
-                            />
-                            {" " + item}</label>
+                    // Display total of each year
+                    <div key={item} className="radioContainer__item">
+                        <input type="radio" id={item} name="year" value={item} onChange={(e) => setYearSearch(e.target.value)} />
+                        <label htmlFor={item}>{item} ({totalByYear[item]})</label>
                     </div>
                 ))}
-                <button className="btn btn-warning" onClick={clearBtn}>Effacer le filtre</button>
+                <button className="btn btn-warning" onClick={clearBtn}>Tout afficher</button>
             </div>
         </fieldset>
     )
