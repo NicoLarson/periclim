@@ -8,6 +8,9 @@ import Card from "./components/Card/Card"
 import Pagination from "./components/Pagination/Pagination"
 import LimitPerPage from "./components/LimitPerPage/LimitPerPage"
 import Filter from "./components/Filter/Filter"
+import Loader from "./components/Loader/Loader"
+import NoResults from "./components/NoResults/NoResults"
+
 
 const App = () => {
   let [pageNumber, updatePageNumber] = useState(1);
@@ -28,9 +31,44 @@ const App = () => {
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json())
+      console.log("🚀 ~ file: App.jsx ~ line 31 ~ data", data)
       updateFetchedData(data)
     })()
   }, [api])
+
+  let displayCard
+  if (fetchedData.length === 0 && search === "") {
+    displayCard = () => { return <Loader /> }
+  } else if (fetchedData.length === 0 && search !== "") {
+    displayCard = () => {
+      return (
+        <NoResults setSearch={setSearch} />
+      )
+    }
+  } else {
+    displayCard = () => {
+      return (
+        <>
+          <p className="total-documents text-info">{totalDocuments} documents</p>
+          <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage} />
+          <div className="card-filter-container">
+            <Filter setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber} updateTotalDocuments={updateTotalDocuments} />
+            <Card results={fetchedData} />
+          </div>
+          <Pagination
+            search={search}
+            pageNumber={pageNumber}
+            updatePageNumber={updatePageNumber}
+            limitPerPage={limitPerPage}
+            year={year}
+            yearString={yearString}
+          />
+
+        </>
+      )
+    }
+  }
+
 
   return (
     <>
@@ -40,21 +78,7 @@ const App = () => {
       </header>
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
-        <p className="total-documents text-info">{totalDocuments} documents</p>
-        <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage} />
-        <div className="card-filter-container">
-          <Filter setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber} updateTotalDocuments={updateTotalDocuments}/>
-          <Card results={fetchedData} />
-        </div>
-        <Pagination
-          search={search}
-          pageNumber={pageNumber}
-          updatePageNumber={updatePageNumber}
-          limitPerPage={limitPerPage}
-          year={year}
-          yearString={yearString}
-        />
-
+        {displayCard()}
       </main>
       <footer>
         <p style={{ fontSize: .8 + 'rem' }}>&copy;Copyright - MIT - 2022</p>
