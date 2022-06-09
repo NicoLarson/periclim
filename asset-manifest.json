@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/periclim/static/css/main.2c0b9eb9.css",
-    "main.js": "/periclim/static/js/main.9d9e4a2f.js",
+    "main.css": "/periclim/static/css/main.32b1579c.css",
+    "main.js": "/periclim/static/js/main.0a5ee152.js",
     "index.html": "/periclim/index.html",
-    "main.2c0b9eb9.css.map": "/periclim/static/css/main.2c0b9eb9.css.map",
-    "main.9d9e4a2f.js.map": "/periclim/static/js/main.9d9e4a2f.js.map"
+    "main.32b1579c.css.map": "/periclim/static/css/main.32b1579c.css.map",
+    "main.0a5ee152.js.map": "/periclim/static/js/main.0a5ee152.js.map"
   },
   "entrypoints": [
-    "static/css/main.2c0b9eb9.css",
-    "static/js/main.9d9e4a2f.js"
+    "static/css/main.32b1579c.css",
+    "static/js/main.0a5ee152.js"
   ]
 }
