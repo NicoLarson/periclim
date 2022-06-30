@@ -5,7 +5,6 @@ import Tags from "./Tags/Tags";
 
 const Card = ({ results }) => {
 
-
     let isJournalArticleIsEmpty = (document) => {
         if (document.publication_title !== "") {
             return (
@@ -61,7 +60,7 @@ const Card = ({ results }) => {
                                 <Tags tagsArray={document.automatic_tags} />
                             </li>
                             <div className="read-article-btn card-body">
-                                <a href={document.url} className="btn btn-success" target="_blank">Voir le document</a>
+                                <a href={document.url} className="btn btn-success" target="_blank" rel="noreferrer">Voir le document</a>
                             </div>
                             {isExtractIsEmpty(document, index)}
                         </div>

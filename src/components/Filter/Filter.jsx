@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import "./Filter.css"
 import FilterByYear from "./FilterByYear/FilterByYear"
-import FilterByKeyword from "./FilterByKeyword/FilterByKeyword"
 
 const Filter = ({ search, setYearSearch, updateTotalDocuments }) => {
     let [fetchedData, updateFetchedData] = useState([])
