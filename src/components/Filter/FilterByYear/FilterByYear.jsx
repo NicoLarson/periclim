@@ -5,11 +5,6 @@ const FilterByYear = ({ fetchedData, setYearSearch }) => {
 
     let years = fetchedData.map((item) => item.publication_year)
     let uniqueItems = [...new Set(years.sort((a, b) => b - a))]
-    const clearBtn = (e) => {
-        e.preventDefault();
-        setYearSearch("")
-        document.querySelectorAll('.radioContainer__item input').forEach(item => item.checked = false)
-    }
 
     let totalByYear = fetchedData.reduce((acc, curr) => {
         if (acc[curr.publication_year]) {
@@ -40,7 +35,6 @@ const FilterByYear = ({ fetchedData, setYearSearch }) => {
                     itemIsNull(item)
                 ))
                 }
-                <button className="btn btn-warning" onClick={clearBtn}>Tout afficher</button>
             </div>
         </fieldset>
     )

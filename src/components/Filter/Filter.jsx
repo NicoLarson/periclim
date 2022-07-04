@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import "./Filter.css"
 import FilterByYear from "./FilterByYear/FilterByYear"
 import FilterByLanguage from "./FilterByLanguage/FilterByLanguage"
+import ResetFilterBtn from "./ResetFilterBtn/ResetFilterBtn"
 
 const Filter = ({ search, setYearSearch, setLanguageSearch, updateTotalDocuments }) => {
     let [fetchedData, updateFetchedData] = useState([])
@@ -20,7 +21,8 @@ const Filter = ({ search, setYearSearch, setLanguageSearch, updateTotalDocuments
             <div class="card-header">Filtres</div>
             <form className="card-body">
                 <FilterByYear setYearSearch={setYearSearch} fetchedData={fetchedData} />
-                <FilterByLanguage setLanguageSearch={setLanguageSearch} fetchedData={fetchedData}/>
+                <FilterByLanguage setLanguageSearch={setLanguageSearch} fetchedData={fetchedData} />
+                <ResetFilterBtn setYearSearch={setYearSearch} setLanguageSearch={setLanguageSearch} />
             </form>
         </div>
     )
