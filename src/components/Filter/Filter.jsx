@@ -41,6 +41,12 @@ const Filter = ({ search, year, language, type, setTypeSearch, setYearSearch, se
         })()
     }, [api])
 
+    let displayResetFilterBtn = () => {
+        if (yearString !== "" || languageString !== "" || typeString !== "") {
+            return <ResetFilterBtn setTypeSearch={setTypeSearch} setYearSearch={setYearSearch} setLanguageSearch={setLanguageSearch} />
+        }
+    }
+
     return (
         <div className="filter desktop-only card mb-3">
             <div class="card-header">Filtres</div>
@@ -48,7 +54,7 @@ const Filter = ({ search, year, language, type, setTypeSearch, setYearSearch, se
                 <FilterByYear setYearSearch={setYearSearch} fetchedData={fetchedData} />
                 <FilterByLanguage setLanguageSearch={setLanguageSearch} fetchedData={fetchedData} />
                 <FilterByType fetchedData={fetchedData} setTypeSearch={setTypeSearch} />
-                <ResetFilterBtn setTypeSearch={setTypeSearch} setYearSearch={setYearSearch} setLanguageSearch={setLanguageSearch} />
+                {displayResetFilterBtn()}
             </form>
         </div>
     )
