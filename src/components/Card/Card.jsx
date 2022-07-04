@@ -34,6 +34,16 @@ const Card = ({ results }) => {
         }
     }
 
+    let isAutomaticTagsIsEmpty = (document) => {
+        if (document.automatic_tags.length !== 1) {
+            return (
+                <li className="list-group-item"><strong>Mots clés: </strong>
+                    <Tags tagsArray={document.automatic_tags} />
+                </li>
+            )
+        }
+    }
+
     let display;
     if (results) {
         display = results.map((document, index) => {
@@ -56,9 +66,8 @@ const Card = ({ results }) => {
                                 </li>
                                 {document.issn ? <li className="list-group-item"><strong>ISSN: </strong>{document.issn}</li> : null}
                             </ul>
-                            <li className="list-group-item"><strong>Mots clés: </strong>
-                                <Tags tagsArray={document.automatic_tags} />
-                            </li>
+                            {isAutomaticTagsIsEmpty(document)}
+
                             <div className="read-article-btn card-body">
                                 <a href={document.url} className="btn btn-success" target="_blank" rel="noreferrer">Voir le document</a>
                             </div>
