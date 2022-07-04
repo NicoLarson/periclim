@@ -68,7 +68,7 @@ const App = () => {
           <p className="total-documents text-info">{totalDocuments} documents</p>
           <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage} />
           <div className="card-filter-container">
-            <Filter setTypeSearch={setTypeSearch} setLanguageSearch={setLanguageSearch} setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber} updateTotalDocuments={updateTotalDocuments} />
+            <Filter year={year} language={language} type={type} setTypeSearch={setTypeSearch} setLanguageSearch={setLanguageSearch} setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber} updateTotalDocuments={updateTotalDocuments} />
             <Card results={fetchedData} />
           </div>
           <Pagination
