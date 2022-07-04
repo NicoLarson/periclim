@@ -89,8 +89,8 @@ const App = () => {
   return (
     <>
       <header>
-        <h1 className="title">Periclim</h1>
-        <h2 className="s-title">Base de données bibliographiques</h2>
+        <h1 className="title">Base de données</h1>
+        <h2 className="s-title">Changement climatique sur le Plateau des Guyanes</h2>
       </header>
       <main>
         <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
