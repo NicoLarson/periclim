@@ -1,0 +1,11 @@
+.fieldsetFilterByType .radioContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.fieldsetFilterByType .radioContainer label {
+    margin: .4rem;
+}
