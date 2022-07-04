@@ -16,6 +16,7 @@ const App = () => {
   let [pageNumber, updatePageNumber] = useState(1);
   let [search, setSearch] = useState("");
   let [year, setYearSearch] = useState("");
+  let [language, setLanguageSearch] = useState("");
   let [fetchedData, updateFetchedData] = useState([])
   let [limitPerPage, setLimitPerPage] = useState(10);
   let [totalDocuments, updateTotalDocuments] = useState(0)
@@ -27,11 +28,17 @@ const App = () => {
     yearString = `&publication_year=${year}`
   }
 
-  let api = `https://periclim-api.herokuapp.com/documents?q=${search}&_limit=${limitPerPage}&_page=${pageNumber}&_sort=publication_year&_order=desc${yearString}`;
+  let languageString
+  if (!language) {
+    languageString = ""
+  } else {
+    languageString = `&language=${language}`
+  }
+
+  let api = `https://periclim-api.herokuapp.com/documents?q=${search}&_limit=${limitPerPage}&_page=${pageNumber}&_sort=publication_year&_order=desc${yearString}${languageString}`;
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then((res) => res.json())
-      console.log("🚀 ~ file: App.jsx ~ line 31 ~ data", data)
       updateFetchedData(data)
     })()
   }, [api])
@@ -52,7 +59,7 @@ const App = () => {
           <p className="total-documents text-info">{totalDocuments} documents</p>
           <LimitPerPage setNumberPerPage={setLimitPerPage} limitPerPage={limitPerPage} />
           <div className="card-filter-container">
-            <Filter setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber} updateTotalDocuments={updateTotalDocuments} />
+            <Filter setLanguageSearch={setLanguageSearch} setYearSearch={setYearSearch} search={search} limitPerPage={limitPerPage} pageNumber={pageNumber} updateTotalDocuments={updateTotalDocuments} />
             <Card results={fetchedData} />
           </div>
           <Pagination

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
 import "./Filter.css"
 import FilterByYear from "./FilterByYear/FilterByYear"
+import FilterByLanguage from "./FilterByLanguage/FilterByLanguage"
 
-const Filter = ({ search, setYearSearch, updateTotalDocuments }) => {
+const Filter = ({ search, setYearSearch, setLanguageSearch, updateTotalDocuments }) => {
     let [fetchedData, updateFetchedData] = useState([])
 
     let api = `https://periclim-api.herokuapp.com/documents?q=${search}`;
@@ -19,6 +20,7 @@ const Filter = ({ search, setYearSearch, updateTotalDocuments }) => {
             <div class="card-header">Filtres</div>
             <form className="card-body">
                 <FilterByYear setYearSearch={setYearSearch} fetchedData={fetchedData} />
+                <FilterByLanguage setLanguageSearch={setLanguageSearch} fetchedData={fetchedData}/>
             </form>
         </div>
     )

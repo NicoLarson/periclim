@@ -34,7 +34,7 @@ const FilterByYear = ({ fetchedData, setYearSearch }) => {
 
     return (
         <fieldset className="fieldsetFilterByYear">
-            <legend>Par année</legend>
+            <legend>Années</legend>
             <div className="radioContainer">
                 {uniqueItems.map((item) => (
                     itemIsNull(item)
